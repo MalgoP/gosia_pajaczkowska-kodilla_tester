@@ -1,15 +1,9 @@
 public class LeapYear {
     public static void main(String[] args) {
         int theYear = 2020;
-
-
         if (isLeapYear(theYear)) {
             System.out.println("Rok: " + theYear + " jest rokiem przestępnym");
         }
-        //System.out.println(theYear);
-        //System.out.println(isLeapYear(theYear));
-
-
     }
 
     public static boolean isLeapYear(int year) {
@@ -27,7 +21,5 @@ public class LeapYear {
             return false;
         }
     }
-
-
-    }
+}
 
