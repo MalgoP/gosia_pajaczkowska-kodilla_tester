@@ -5,8 +5,8 @@ import java.util.Random;
 public class RandomNumbers {
     int minValue;
     int maxValue;
-    int maxSum = 5000;
-    int maxRandom = 30;
+    int maxSum;
+    int maxRandom;
 
     public RandomNumbers(int maxSum, int maxRandom) {
         this.maxSum = maxSum;
@@ -21,23 +21,32 @@ public class RandomNumbers {
         while (sum < maxSum) {
             int randomValue = random.nextInt(maxRandom + 1);
             sum += randomValue;
-            if (minValue > randomValue) {
-                minValue = randomValue;
-            }
-            if (maxValue < randomValue) {
-                maxValue = randomValue;
-            }
+            calcMaxValue(randomValue);
+            calcMinValue(randomValue);
+
             System.out.println("randomValue " + randomValue);
             System.out.println("sum " + sum);
         }
     }
 
-    public int getMaxValue() {
-        return maxValue;
+    private void calcMaxValue(int randomValue) {
+        if (maxValue < randomValue) {
+            maxValue = randomValue;
+        }
+    }
+
+    private void calcMinValue(int randomValue) {
+        if (minValue > randomValue) {
+            minValue = randomValue;
+        }
     }
 
     public int getMinValue() {
         return minValue;
+    }
+
+    public int getMaxValue() {
+        return maxValue;
     }
 
     public static void main(String[] args) {

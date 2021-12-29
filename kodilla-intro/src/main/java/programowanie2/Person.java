@@ -2,10 +2,10 @@ package programowanie2;
 
 public class Person {
     String name;
-    double age = 0.0;
-    double height = 0;
-    double older = 30;
-    double higher = 160;
+    double age;
+    double height;
+    double maxAge = 30;
+    double maxHeight = 160;
 
     public Person(String name, double age, double height) {
         this.name = name;
@@ -14,7 +14,7 @@ public class Person {
     }
 
     public void olderHigher() {
-        if (this.age > older && this.height > higher) {
+        if (this.age > maxAge && this.height > maxHeight) {
             System.out.println("programowanie2.User is older than 30 and higher than 160cm");
         } else {
             System.out.println("programowanie2.User is 30 (or younger) or 160cm (or shorter)");
