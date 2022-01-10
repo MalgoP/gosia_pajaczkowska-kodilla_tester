@@ -27,6 +27,5 @@ public class CarsListApplication {
         for (Car car : cars) {
             CarUtils.describeCar(car);
         }
-
     }
 }

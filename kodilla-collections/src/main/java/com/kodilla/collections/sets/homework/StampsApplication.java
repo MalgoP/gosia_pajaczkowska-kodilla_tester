@@ -16,8 +16,9 @@ public class StampsApplication {
         stamps.add(new Stamp("Kapral niedźwiedź Wojtek", 31.25, 43.0, false));
 
         System.out.println(stamps.size());
-        for (Stamp stamp : stamps)
+        for (Stamp stamp : stamps) {
             System.out.println(stamp);
+        }
     }
 }
 

@@ -3,7 +3,7 @@ package com.kodilla.abstracts.homework;
 public class GasTechnician extends Job {
 
     public GasTechnician(int salary) {
-        super(3200);
+        super(salary);
         String[] responsibilities = {"Sealing or replacing gas taps;"
                 , "Periodic checking of tightness of pipeline joints and fittings;"
                 , "Connecting gas appliances after the works are completed;"
