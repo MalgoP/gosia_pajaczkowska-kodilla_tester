@@ -11,14 +11,6 @@ public class Flight {
         this.arrival = arrival;
     }
 
-    public String getDeparture() {
-        return departure;
-    }
-
-    public String getArrival() {
-        return arrival;
-    }
-
     @Override
     public String toString() {
         return "Flight{" +

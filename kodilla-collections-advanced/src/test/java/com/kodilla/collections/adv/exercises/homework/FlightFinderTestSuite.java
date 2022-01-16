@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FlightFinderTestSuit {
+class FlightFinderTestSuite {
 
     @Test
     public void testFindFlightsFrom() {
