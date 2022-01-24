@@ -2,7 +2,6 @@ package com.kodilla.optional.homework;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,12 +13,7 @@ public class Application {
         students.add(new Student("Ivan Ogr", null));
 
         for (Student student : students) {
-            Optional<Teacher> optionalTeacher = Optional.ofNullable(student.getTeacher());
-            System.out.println("Name of student: " + student.getName() + " and his teacher is: " + optionalTeacher.orElse(new Teacher("<undefined>")).getName());
+            System.out.println("Name of student: " + student.getName() + " and his teacher is: " + student.getTeacher().orElse(new Teacher("<undefined>")).getName());
         }
     }
 }
-
-
-
-
