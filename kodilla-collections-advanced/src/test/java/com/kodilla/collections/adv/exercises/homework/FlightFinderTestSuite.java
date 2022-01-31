@@ -14,7 +14,7 @@ class FlightFinderTestSuite {
         FlightRepository.addFlight("Dubai", "Warsaw");
         FlightRepository.addFlight("Dubai", "Paris");
         FlightRepository.addFlight("Paris", "Dubai");
-        FlightRepository.addFlight("Dubai", "San Francisco");
+        FlightRepository.addFlight("Dubai", "Praha");
         FlightRepository.addFlight("Dubai", "Lisbon");
 
         FlightFinder flightFinder = new FlightFinder();
@@ -23,7 +23,7 @@ class FlightFinderTestSuite {
         List<Flight> expectedFromList =  new LinkedList<>();
         expectedFromList.add(new Flight("Dubai", "Warsaw"));
         expectedFromList.add(new Flight("Dubai", "Paris"));
-        expectedFromList.add(new Flight("Dubai", "San Francisco"));
+        expectedFromList.add(new Flight("Dubai", "Praha"));
         expectedFromList.add(new Flight("Dubai", "Lisbon"));
         assertEquals(expectedFromList,flightFromDubai);
     }

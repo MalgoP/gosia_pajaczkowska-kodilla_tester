@@ -17,12 +17,18 @@ class GamblingMachineTestSuite {
     @ParameterizedTest
     @CsvFileSource(resources = "/numbersToBeDrawn.csv", numLinesToSkip = 1)
     public void shouldCheckHowManyWins(@AggregateWith(NumbersAggregator.class) Set<Integer> numbers) {
-        int howManyWins = 0;
+        assertDoesNotThrow(() ->  gamblingMachine.howManyWins(numbers));
         try {
-            howManyWins = gamblingMachine.howManyWins(numbers);
+            int howManyWins = gamblingMachine.howManyWins(numbers);
+            assertTrue(howManyWins>=0 && howManyWins<=6);
         } catch (InvalidNumbersException e) {
             e.printStackTrace();
         }
-        System.out.println(howManyWins);
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/numbersToBeDrawnBad.csv", numLinesToSkip = 1)
+    public void shouldValidateNumbers(@AggregateWith(NumbersAggregator.class) Set<Integer> numbers) {
+        assertThrows(InvalidNumbersException.class,() ->  gamblingMachine.howManyWins(numbers));
     }
 }
