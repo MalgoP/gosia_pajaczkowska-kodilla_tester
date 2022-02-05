@@ -8,12 +8,14 @@ import java.util.Set;
 public class AlertService {
     Set<Person> subscribedPersons = new HashSet<>();
     Map<String,Set<Person>> locationSubscription = new HashMap<>();
+
     public void addSubscription(String location, Person person){
         subscribedPersons.add(person);
         Set<Person> locationSubscriptionsSet = locationSubscription.getOrDefault(location,new HashSet<>());
         locationSubscriptionsSet.add(person);
         locationSubscription.put(location,locationSubscriptionsSet);
     }
+
     public void removeSubscription(String location, Person person){
         locationSubscription.getOrDefault(location,new HashSet<>()).remove(person);
     }

@@ -31,4 +31,17 @@ class GamblingMachineTestSuite {
     public void shouldValidateNumbers(@AggregateWith(NumbersAggregator.class) Set<Integer> numbers) {
         assertThrows(InvalidNumbersException.class,() ->  gamblingMachine.howManyWins(numbers));
     }
+
+//    @ParameterizedTest
+//    @CsvFileSource(resources = "/numbersToBeDrawnBad.csv", numLinesToSkip = 1)
+//    public void shouldValidateNumbersSecondMethod(String numbers) {
+//        String[] splitNumbers = numbers.split(",");
+//        int[] splitInt = new int[5];
+//
+//        for(String number : splitNumbers) {
+//            for (int i = 0; i < 6; i++) {
+//                splitInt[i] = Integer.valueOf(number);
+//            }
+//        }
+//    }
 }

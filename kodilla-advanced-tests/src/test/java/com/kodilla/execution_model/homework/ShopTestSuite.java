@@ -47,27 +47,31 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldReturnTwoOrdersForChooseDates() {
+    public void shouldReturnTwoOrdersForChooseDates() throws Exception {
         Set<Order> ordersBetweenDates = null;
         Date from, to;
-        try {
-            from = simpleDateFormat.parse("2021-12-01");
-            to = simpleDateFormat.parse("2022-01-11");
-            ordersBetweenDates = shop.getOrders(from, to);
-            for (Order order : ordersBetweenDates) {
-                assertTrue(order.getDate().compareTo(from) >= 0 && order.getDate().compareTo(to) <= 0);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            from = simpleDateFormat.parse("2021-12-01");
+//            to = simpleDateFormat.parse("2022-01-11");
+//            ordersBetweenDates = shop.getOrders(from, to);
+//            for (Order order : ordersBetweenDates) {
+//                assertTrue(order.getDate().compareTo(from) >= 0 && order.getDate().compareTo(to) <= 0);
+//            }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        from = simpleDateFormat.parse("2021-12-01");
+        to = simpleDateFormat.parse("2022-01-11");
+        ordersBetweenDates = shop.getOrders(from, to);
+        assertEquals(new Order(200.0, simpleDateFormat.parse("2022-01-01"), "login1"), ordersBetweenDates.stream().filter(order -> order.getDate().compareTo(from) >= 0 && order.getDate().compareTo(to) <= 0)
+                .findFirst().orElseThrow(Exception::new));
     }
 
     @Test
     public void shouldReturnThreeOrdersForTheSetBetweenTwoChosenAmounts() {
         Set<Order> ordersBetweenAmounts = shop.getOrders(200.0, 500.0);
         for (Order order : ordersBetweenAmounts) {
-            assertTrue(order.getAmount()>=200.0&& order.getAmount()<=500);
+            assertTrue(order.getAmount() >= 200.0 && order.getAmount() <= 500);
         }
     }
 
