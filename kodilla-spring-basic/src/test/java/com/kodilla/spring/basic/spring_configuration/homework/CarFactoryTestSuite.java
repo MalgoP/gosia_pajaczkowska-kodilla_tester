@@ -5,16 +5,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @SpringBootTest
 class CarFactoryTestSuite {
+
+    private static DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     @Test
     void shouldRideSuvInWinter() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("WINTER");
-        carFactory.setHour(5);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-03-20 19:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertEquals("SUV",car.getCarType());
     }
@@ -23,8 +27,8 @@ class CarFactoryTestSuite {
     void shouldRideCabrioInSummer() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("SUMMER");
-        carFactory.setHour(22);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-07-20 19:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertEquals("Cabrio",car.getCarType());
     }
@@ -33,8 +37,8 @@ class CarFactoryTestSuite {
     void shouldRideSedanInAutumn() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("AUTUMN");
-        carFactory.setHour(16);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-04-25 05:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertEquals("Sedan",car.getCarType());
     }
@@ -43,8 +47,8 @@ class CarFactoryTestSuite {
     void shouldRideSedanInSpring() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("SPRING");
-        carFactory.setHour(12);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-11-05 23:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertEquals("Sedan",car.getCarType());
     }
@@ -53,19 +57,18 @@ class CarFactoryTestSuite {
     void shouldTurnOnLights() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("WINTER");
-        carFactory.setHour(5);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-03-20 03:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertTrue(car.hasHeadlightsTurnedOn());
     }
-
 
     @Test
     void shouldTurnOffLights() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic.spring_configuration.homework");
         CarFactory carFactory = context.getBean(CarFactory.class);
-        carFactory.setSeason("WINTER");
-        carFactory.setHour(7);
+        LocalDateTime dateTime = LocalDateTime.parse("2022-03-20 16:00",df);
+        carFactory.setDateTime(dateTime);
         Car car = (Car)context.getBean("createCar");
         Assertions.assertFalse(car.hasHeadlightsTurnedOn());
     }
